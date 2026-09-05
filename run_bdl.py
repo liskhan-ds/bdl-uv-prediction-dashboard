@@ -60,6 +60,8 @@ TEAM_NAME_MAP = {
     "Köln": "쾰른",
     "Hamburg SV": "함부르크",
     "Hamburger SV": "함부르크",
+    "SV Elversberg": "엘버스베르크",
+    "SC Paderborn 07": "파더보른",
 }
 
 OFFICIAL_STATS = {
@@ -345,7 +347,7 @@ def get_match_prediction(home_team, away_team):
     }
 
 def run_pipeline():
-    url = "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard?dates=20250801-20260601&limit=500"
+    url = "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard?dates=20260801-20270601&limit=500"
     
     try:
         res = requests.get(url, timeout=10)
@@ -363,18 +365,16 @@ def run_pipeline():
 
     events.sort(key=lambda x: x["date"])
 
-    # Split 306 events into 34 Gameweeks (Gameweek 1 ~ Gameweek 34, 9 matches per Gameweek)
     matchweeks = []
     chunk_size = 9
     for i in range(0, len(events), chunk_size):
         matchweeks.append(events[i:i + chunk_size])
 
-    print(f"총 {len(matchweeks)}개 라운드(Gameweek 1 ~ Gameweek {len(matchweeks)}) 수집됨.")
+    print(f"2026/27 시즌 총 {len(matchweeks)}개 라운드(Gameweek 1 ~ Gameweek {len(matchweeks)}) 수집됨.")
 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # Drop old predictions table to cleanly re-create 34 Gameweeks
     cursor.execute("DROP TABLE IF EXISTS predictions")
 
     cursor.execute("""
@@ -475,7 +475,7 @@ def run_pipeline():
 
     conn.commit()
     conn.close()
-    print("✅ bdl_data.db 파이프라인 34 Gameweek 데이터 업데이트 완료!")
+    print("✅ bdl_data.db 파이프라인 2026/27 시즌 34 Gameweek 데이터 업데이트 완료!")
 
 if __name__ == "__main__":
     run_pipeline()
