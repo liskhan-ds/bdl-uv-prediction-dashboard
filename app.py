@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import streamlit as st
+from datetime import datetime, timedelta
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "bdl_data.db")
@@ -232,13 +233,19 @@ def load_data():
         
         if not df_db.empty:
             if "round_name" not in df_db.columns:
-                df_db["round_name"] = "Round 1 (Matchweek 1)"
+                df_db["round_name"] = "Round 1 (Gameweek 1)"
             if "date" not in df_db.columns and "match_date" in df_db.columns:
                 df_db["date"] = df_db["match_date"]
             if "uk_date" not in df_db.columns:
                 df_db["uk_date"] = df_db["match_date"]
             if "kst_date" not in df_db.columns:
-                df_db["kst_date"] = df_db["match_date"]
+                def to_kst(dt_str):
+                    try:
+                        dt = datetime.strptime(dt_str, "%Y-%m-%d")
+                        return (dt + timedelta(hours=9)).strftime("%Y-%m-%d")
+                    except Exception:
+                        return dt_str
+                df_db["kst_date"] = df_db["match_date"].apply(to_kst)
             if "visit_team" not in df_db.columns and "away_team" in df_db.columns:
                 df_db["visit_team"] = df_db["away_team"]
             if "visit_uv" not in df_db.columns and "away_wuv" in df_db.columns:
@@ -258,7 +265,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("⚽ Bundesliga (BDL) AI Match Predictor & Unit Value Dashboard")
+st.title("⚽ BDL AI Match Predictor & Unit Value Dashboard")
 st.markdown("독일 분데스리가 선수별 Unit Value(UV) 및 팀별 Weighted Unit Value(WUV) 기반 승패 예측 시스템")
 
 df = load_data()
@@ -298,9 +305,9 @@ else:
 st.markdown("---")
 
 # -----------------------------------------------------------------------------
-# Prediction Scorecard by Round (Matchweek)
+# Prediction Scorecard by Round (BDL Gameweek)
 # -----------------------------------------------------------------------------
-st.header("📈 Prediction Scorecard by Round (Bundesliga Matchweek)")
+st.header("📈 Prediction Scorecard by Round (BDL Gameweek)")
 
 if not stats_df.empty:
     group_col = 'round_name' if 'round_name' in stats_df.columns else 'date'
@@ -327,7 +334,7 @@ if not stats_df.empty:
 
     round_stats_7d = round_stats.tail(10)
 
-    base = alt.Chart(round_stats_7d).encode(x=alt.X(group_col, title='Bundesliga Matchweek', sort=None))
+    base = alt.Chart(round_stats_7d).encode(x=alt.X(group_col, title='BDL Gameweek', sort=None))
     bars = base.mark_bar().encode(
         y=alt.Y('accuracy', title='Accuracy (%)', scale=alt.Scale(domain=[0, 110])),
         color=alt.Color('bar_color', scale=None),
@@ -382,7 +389,6 @@ wuv_df["Rank"] = range(1, len(wuv_df) + 1)
 cols_wuv = ["Rank", "Team", "Total WUV", "GK WUV", "DF WUV", "MF WUV", "FW WUV", "Starter Avg UV", "Sub Avg UV"]
 st.dataframe(wuv_df[cols_wuv], hide_index=True, width='stretch')
 
-# Altair Team WUV Bar Chart
 wuv_chart = alt.Chart(wuv_df).mark_bar(color='#E32219').encode(
     x=alt.X('Team', sort='-y', title='Team'),
     y=alt.Y('Total WUV', title='Weighted Unit Value (WUV)', scale=alt.Scale(domain=[7, 16])),
@@ -395,7 +401,7 @@ st.markdown("---")
 # -----------------------------------------------------------------------------
 # Gameweek Match Report Dataframe
 # -----------------------------------------------------------------------------
-st.header("📋 Bundesliga Gameweek Match Report")
+st.header("📋 Gameweek Match Report (9 Matchups)")
 
 def extract_round_num(text):
     import re
@@ -404,21 +410,21 @@ def extract_round_num(text):
 
 if not df.empty:
     if 'round_name' in df.columns:
-        unique_dates = sorted(df['round_name'].unique(), key=extract_round_num)
+        unique_dates = sorted(df['round_name'].unique(), key=extract_round_num, reverse=True)
         
         pending_df = df[df['actual_winner'].isna() | (df['actual_winner'] == '')]
         default_idx = 0
         if not pending_df.empty:
-            pending_rounds = sorted(pending_df['round_name'].unique(), key=extract_round_num)
+            pending_rounds = sorted(pending_df['round_name'].unique(), key=extract_round_num, reverse=False)
             target_round = pending_rounds[0]
             if target_round in unique_dates:
                 default_idx = unique_dates.index(target_round)
                 
-        selected_date = st.selectbox("Select Matchweek to inspect:", unique_dates, index=default_idx)
+        selected_date = st.selectbox("Select Gameweek to inspect:", unique_dates, index=default_idx)
         filtered_df = df[df['round_name'] == selected_date].copy().reset_index(drop=True)
     else:
-        unique_dates = sorted(df['date'].unique())
-        selected_date = st.selectbox("Select Matchweek to inspect:", unique_dates, index=0)
+        unique_dates = sorted(df['date'].unique(), reverse=True)
+        selected_date = st.selectbox("Select Gameweek to inspect:", unique_dates, index=0)
         filtered_df = df[df['date'] == selected_date].copy().reset_index(drop=True)
 
     if not filtered_df.empty:
@@ -439,7 +445,8 @@ if not df.empty:
 
         display_df = pd.DataFrame()
         display_df['No.'] = filtered_df['day_no']
-        display_df['Match Date'] = filtered_df['match_date']
+        display_df['Match Date (UK)'] = filtered_df['uk_date']
+        display_df['Match Date (KST)'] = filtered_df['kst_date']
         display_df['Home Team'] = filtered_df.apply(lambda r: f"{r['home_team']} ({r['home_total_wuv']:.2f} WUV)" if ('home_total_wuv' in r and pd.notna(r.get('home_total_wuv'))) else f"{r['home_team']}", axis=1)
         display_df['Away Team'] = filtered_df.apply(lambda r: f"{r['visit_team']} ({r['away_total_wuv']:.2f} WUV)" if ('away_total_wuv' in r and pd.notna(r.get('away_total_wuv'))) else f"{r['visit_team']}", axis=1)
         display_df['AI Prediction'] = filtered_df['predicted_winner']

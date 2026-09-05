@@ -363,28 +363,19 @@ def run_pipeline():
 
     events.sort(key=lambda x: x["date"])
 
-    # Cluster events into matchweeks based on gap > 3 days
+    # Split 306 events into 34 Gameweeks (Gameweek 1 ~ Gameweek 34, 9 matches per Gameweek)
     matchweeks = []
-    current_mw = []
+    chunk_size = 9
+    for i in range(0, len(events), chunk_size):
+        matchweeks.append(events[i:i + chunk_size])
 
-    for e in events:
-        if not current_mw:
-            current_mw.append(e)
-        else:
-            last_date = datetime.fromisoformat(current_mw[-1]["date"].replace("Z", "+00:00"))
-            curr_date = datetime.fromisoformat(e["date"].replace("Z", "+00:00"))
-            if (curr_date - last_date).days > 3:
-                matchweeks.append(current_mw)
-                current_mw = [e]
-            else:
-                current_mw.append(e)
-    if current_mw:
-        matchweeks.append(current_mw)
-
-    print(f"총 {len(matchweeks)}개 라운드(Matchweek) 수집됨.")
+    print(f"총 {len(matchweeks)}개 라운드(Gameweek 1 ~ Gameweek {len(matchweeks)}) 수집됨.")
 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
+
+    # Drop old predictions table to cleanly re-create 34 Gameweeks
+    cursor.execute("DROP TABLE IF EXISTS predictions")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS predictions (
@@ -414,8 +405,8 @@ def run_pipeline():
     """)
 
     for mw_idx, mw_events in enumerate(matchweeks, 1):
-        round_label = f"Round {mw_idx} (Matchweek {mw_idx})"
-        mw_prefix = f"MW{mw_idx}"
+        round_label = f"Round {mw_idx} (Gameweek {mw_idx})"
+        mw_prefix = f"GW{mw_idx}"
         
         for game_idx, e in enumerate(mw_events, 1):
             comp = e.get("competitions", [{}])[0]
@@ -455,58 +446,36 @@ def run_pipeline():
                 
             mid = f"2026_{mw_prefix}_{game_idx}"
             
-            cursor.execute("SELECT predicted_winner FROM predictions WHERE match_id = ?", (mid,))
-            existing = cursor.fetchone()
+            pred = get_match_prediction(h_team, a_team)
+            pred_winner = pred["winner"]
             
-            if existing:
-                pred_winner = existing[0]
-                if is_completed and act_winner is not None:
-                    if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
-                        is_corr = 1
-                    else:
-                        is_corr = 0
+            if is_completed and act_winner is not None:
+                if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
+                    is_corr = 1
                 else:
-                    is_corr = None
-                    
-                cursor.execute("""
-                UPDATE predictions SET
-                    actual_score_home = ?,
-                    actual_score_away = ?,
-                    actual_winner = ?,
-                    is_correct = ?
-                WHERE match_id = ?
-                """, (act_sc_h, act_sc_a, act_winner, is_corr, mid))
+                    is_corr = 0
             else:
-                pred = get_match_prediction(h_team, a_team)
-                pred_winner = pred["winner"]
+                is_corr = None
                 
-                if is_completed and act_winner is not None:
-                    if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
-                        is_corr = 1
-                    else:
-                        is_corr = 0
-                else:
-                    is_corr = None
-                    
-                cursor.execute("""
-                INSERT INTO predictions (
-                    match_id, round_name, home_team, away_team, match_date,
-                    home_wuv, away_wuv, home_total_wuv, away_total_wuv,
-                    gap, predicted_winner, prob_home, prob_draw, prob_away,
-                    score_home, score_away,
-                    actual_score_home, actual_score_away, actual_winner, is_correct
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    mid, round_label, h_team, a_team, date_raw[:10],
-                    pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
-                    pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
-                    pred["sc_h"], pred["sc_a"],
-                    act_sc_h, act_sc_a, act_winner, is_corr
-                ))
+            cursor.execute("""
+            INSERT INTO predictions (
+                match_id, round_name, home_team, away_team, match_date,
+                home_wuv, away_wuv, home_total_wuv, away_total_wuv,
+                gap, predicted_winner, prob_home, prob_draw, prob_away,
+                score_home, score_away,
+                actual_score_home, actual_score_away, actual_winner, is_correct
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                mid, round_label, h_team, a_team, date_raw[:10],
+                pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
+                pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
+                pred["sc_h"], pred["sc_a"],
+                act_sc_h, act_sc_a, act_winner, is_corr
+            ))
 
     conn.commit()
     conn.close()
-    print("✅ bdl_data.db 파이프라인 데이터 업데이트 완료!")
+    print("✅ bdl_data.db 파이프라인 34 Gameweek 데이터 업데이트 완료!")
 
 if __name__ == "__main__":
     run_pipeline()
