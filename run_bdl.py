@@ -5,97 +5,46 @@ import json
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta, timezone
+import zoneinfo
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "bdl_data.db")
 
-# 팀명 매핑 영문 -> 한글 (분데스리가 18개 팀 및 다양한 표현 지원)
 TEAM_NAME_MAP = {
-    "Bayern Munich": "바이에른 뮌헨",
-    "FC Bayern München": "바이에른 뮌헨",
-    "FC Bayern Munich": "바이에른 뮌헨",
-    "Bayer Leverkusen": "바이어 레버쿠젠",
-    "Bayer 04 Leverkusen": "바이어 레버쿠젠",
-    "Borussia Dortmund": "보루시아 도르트문트",
-    "Dortmund": "보루시아 도르트문트",
-    "RB Leipzig": "RB 라이프치히",
-    "Leipzig": "RB 라이프치히",
-    "Eintracht Frankfurt": "아인트라흐트 프랑크푸르트",
-    "Frankfurt": "아인트라흐트 프랑크푸르트",
-    "VfB Stuttgart": "슈투트가르트",
-    "Stuttgart": "슈투트가르트",
-    "VfL Wolfsburg": "볼프스부르크",
-    "Wolfsburg": "볼프스부르크",
-    "Borussia Mönchengladbach": "보루시아 묀헨글라트바흐",
-    "Mönchengladbach": "보루시아 묀헨글라트바흐",
-    "Borussia M'gladbach": "보루시아 묀헨글라트바흐",
-    "TSG Hoffenheim": "호펜하임",
-    "TSG 1899 Hoffenheim": "호펜하임",
-    "Hoffenheim": "호펜하임",
-    "SC Freiburg": "프라이부르크",
-    "Freiburg": "프라이부르크",
-    "FC Augsburg": "아우크스부르크",
-    "Augsburg": "아우크스부르크",
-    "Mainz": "마인츠 05",
-    "Mainz 05": "마인츠 05",
-    "FSV Mainz 05": "마인츠 05",
-    "1. FSV Mainz 05": "마인츠 05",
-    "Werder Bremen": "베르더 브레멘",
-    "SV Werder Bremen": "베르더 브레멘",
-    "Bremen": "베르더 브레멘",
-    "1. FC Union Berlin": "우니온 베를린",
-    "Union Berlin": "우니온 베를린",
-    "St. Pauli": "장크트파울리",
-    "FC St. Pauli": "장크트파울리",
-    "Holstein Kiel": "홀슈타인 킬",
-    "Kiel": "홀슈타인 킬",
-    "VfL Bochum": "보훔",
-    "Bochum": "보훔",
-    "1. FC Heidenheim 1846": "하이덴하임",
-    "1. FC Heidenheim": "하이덴하임",
-    "FC Heidenheim": "하이덴하임",
-    "Heidenheim": "하이덴하임",
-    "FC Cologne": "쾰른",
-    "1. FC Köln": "쾰른",
-    "Köln": "쾰른",
-    "Hamburg SV": "함부르크",
-    "Hamburger SV": "함부르크",
-    "SV Elversberg": "엘버스베르크",
-    "SC Paderborn 07": "파더보른",
+    "Bayern Munich": "바이에른 뮌헨", "FC Bayern München": "바이에른 뮌헨", "FC Bayern Munich": "바이에른 뮌헨",
+    "Bayer Leverkusen": "바이어 레버쿠젠", "Bayer 04 Leverkusen": "바이어 레버쿠젠",
+    "Borussia Dortmund": "보루시아 도르트문트", "Dortmund": "보루시아 도르트문트",
+    "RB Leipzig": "RB 라이프치히", "Leipzig": "RB 라이프치히",
+    "Eintracht Frankfurt": "아인트라흐트 프랑크푸르트", "Frankfurt": "아인트라흐트 프랑크푸르트",
+    "VfB Stuttgart": "슈투트가르트", "Stuttgart": "슈투트가르트",
+    "VfL Wolfsburg": "볼프스부르크", "Wolfsburg": "볼프스부르크",
+    "Borussia Mönchengladbach": "보루시아 묀헨글라트바흐", "Mönchengladbach": "보루시아 묀헨글라트바흐",
+    "TSG Hoffenheim": "호펜하임", "TSG 1899 Hoffenheim": "호펜하임", "Hoffenheim": "호펜하임",
+    "SC Freiburg": "프라이부르크", "Freiburg": "프라이부르크",
+    "FC Augsburg": "아우크스부르크", "Augsburg": "아우크스부르크",
+    "Mainz": "마인츠 05", "Mainz 05": "마인츠 05", "FSV Mainz 05": "마인츠 05",
+    "Werder Bremen": "베르더 브레멘", "SV Werder Bremen": "베르더 브레멘", "Bremen": "베르더 브레멘",
+    "1. FC Union Berlin": "우니온 베를린", "Union Berlin": "우니온 베를린",
+    "St. Pauli": "장크트파울리", "FC St. Pauli": "장크트파울리",
+    "Holstein Kiel": "홀슈타인 킬", "Kiel": "홀슈타인 킬",
+    "VfL Bochum": "보훔", "Bochum": "보훔",
+    "1. FC Heidenheim 1846": "하이덴하임", "FC Heidenheim": "하이덴하임", "Heidenheim": "하이덴하임",
+    "FC Cologne": "쾰른", "1. FC Köln": "쾰른", "Hamburg SV": "함부르크",
+    "SV Elversberg": "엘버스베르크", "SC Paderborn 07": "파더보른", "Schalke 04": "샬케 04", "FC Schalke 04": "샬케 04"
 }
 
 OFFICIAL_STATS = {
-    "Harry Kane": (7.90, 0.90),
-    "Florian Wirtz": (7.80, 0.45),
-    "Jamal Musiala": (7.75, 0.40),
-    "Serhou Guirassy": (7.65, 0.65),
-    "Omar Marmoush": (7.65, 0.60),
-    "Xavi Simons": (7.60, 0.35),
-    "Joshua Kimmich": (7.60, 0.15),
-    "Lois Openda": (7.55, 0.55),
-    "Granit Xhaka": (7.55, 0.10),
-    "Alejandro Grimaldo": (7.55, 0.25),
-    "Jeremie Frimpong": (7.50, 0.22),
-    "Victor Boniface": (7.50, 0.50),
-    "Michael Olise": (7.50, 0.38),
-    "Jonathan Tah": (7.45, 0.05),
-    "Gregor Kobel": (7.45, 0.0),
-    "Deniz Undav": (7.45, 0.48),
-    "Alphonso Davies": (7.40, 0.08),
-    "Nico Schlotterbeck": (7.40, 0.05),
-    "Benjamin Sesko": (7.40, 0.45),
-    "Manuel Neuer": (7.35, 0.0),
-    "Leroy Sane": (7.35, 0.30),
-    "Julian Brandt": (7.35, 0.25),
-    "Kim Min-Jae": (7.35, 0.05),
-    "Hugo Ekitike": (7.35, 0.35),
-    "Andrej Kramaric": (7.35, 0.35),
-    "Lukas Hradecky": (7.30, 0.0),
-    "Dayot Upamecano": (7.30, 0.05),
-    "Marcel Sabitzer": (7.30, 0.18),
-    "Vincenzo Grifo": (7.30, 0.30),
-    "Lee Jae-Sung": (7.25, 0.20),
-    "Shuto Machino": (7.15, 0.30),
+    "Harry Kane": (7.90, 0.90), "Florian Wirtz": (7.80, 0.45), "Jamal Musiala": (7.75, 0.40),
+    "Serhou Guirassy": (7.65, 0.65), "Omar Marmoush": (7.65, 0.60), "Xavi Simons": (7.60, 0.35),
+    "Joshua Kimmich": (7.60, 0.15), "Lois Openda": (7.55, 0.55), "Granit Xhaka": (7.55, 0.10),
+    "Alejandro Grimaldo": (7.55, 0.25), "Jeremie Frimpong": (7.50, 0.22), "Victor Boniface": (7.50, 0.50),
+    "Michael Olise": (7.50, 0.38), "Jonathan Tah": (7.45, 0.05), "Gregor Kobel": (7.45, 0.0),
+    "Deniz Undav": (7.45, 0.48), "Alphonso Davies": (7.40, 0.08), "Nico Schlotterbeck": (7.40, 0.05),
+    "Benjamin Sesko": (7.40, 0.45), "Manuel Neuer": (7.35, 0.0), "Leroy Sane": (7.35, 0.30),
+    "Julian Brandt": (7.35, 0.25), "Kim Min-Jae": (7.35, 0.05), "Hugo Ekitike": (7.35, 0.35),
+    "Andrej Kramaric": (7.35, 0.35), "Lukas Hradecky": (7.30, 0.0), "Dayot Upamecano": (7.30, 0.05),
+    "Marcel Sabitzer": (7.30, 0.18), "Vincenzo Grifo": (7.30, 0.30), "Lee Jae-Sung": (7.25, 0.20),
+    "Shuto Machino": (7.15, 0.30)
 }
 
 TEAM_GOALS_PER_GAME = {
@@ -385,6 +334,8 @@ def run_pipeline():
         home_team TEXT NOT NULL,
         away_team TEXT NOT NULL,
         match_date TEXT NOT NULL,
+        match_date_ger TEXT NOT NULL,
+        match_date_kst TEXT NOT NULL,
         home_wuv REAL NOT NULL,
         away_wuv REAL NOT NULL,
         home_total_wuv REAL NOT NULL,
@@ -403,6 +354,9 @@ def run_pipeline():
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
+
+    ger_tz = zoneinfo.ZoneInfo("Europe/Berlin")
+    kst_tz = zoneinfo.ZoneInfo("Asia/Seoul")
 
     for mw_idx, mw_events in enumerate(matchweeks, 1):
         round_label = f"Round {mw_idx} (Gameweek {mw_idx})"
@@ -424,7 +378,16 @@ def run_pipeline():
             a_team = normalize_team_name(a_team_raw)
             
             date_raw = e.get("date", "")
-            
+            if date_raw:
+                dt_utc = datetime.fromisoformat(date_raw.replace("Z", "+00:00"))
+                dt_ger = dt_utc.astimezone(ger_tz)
+                dt_kst = dt_utc.astimezone(kst_tz)
+                ger_date_str = dt_ger.strftime("%Y-%m-%d")
+                kst_date_str = dt_kst.strftime("%Y-%m-%d")
+            else:
+                ger_date_str = "2026-08-28"
+                kst_date_str = "2026-08-29"
+
             status_type = e.get("status", {}).get("type", {}).get("name", "")
             is_completed = (status_type == "STATUS_FULL_TIME")
             is_cancelled = status_type in ["STATUS_POSTPONED", "STATUS_CANCELED", "STATUS_SUSPENDED", "STATUS_ABANDONED"]
@@ -459,14 +422,14 @@ def run_pipeline():
                 
             cursor.execute("""
             INSERT INTO predictions (
-                match_id, round_name, home_team, away_team, match_date,
+                match_id, round_name, home_team, away_team, match_date, match_date_ger, match_date_kst,
                 home_wuv, away_wuv, home_total_wuv, away_total_wuv,
                 gap, predicted_winner, prob_home, prob_draw, prob_away,
                 score_home, score_away,
                 actual_score_home, actual_score_away, actual_winner, is_correct
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
-                mid, round_label, h_team, a_team, date_raw[:10],
+                mid, round_label, h_team, a_team, ger_date_str, ger_date_str, kst_date_str,
                 pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
                 pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
                 pred["sc_h"], pred["sc_a"],
@@ -475,7 +438,7 @@ def run_pipeline():
 
     conn.commit()
     conn.close()
-    print("✅ bdl_data.db 파이프라인 2026/27 시즌 34 Gameweek 데이터 업데이트 완료!")
+    print("✅ bdl_data.db 파이프라인 GER/KST 정확한 타임존 날짜 반영 완료!")
 
 if __name__ == "__main__":
     run_pipeline()
