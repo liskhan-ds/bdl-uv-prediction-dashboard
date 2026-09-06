@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "bdl_data.db")
 
 st.set_page_config(
-    page_title="BDL AI Match Predictor",
+    page_title="Bundesliga AI Match Predictor",
     page_icon="⚽",
     layout="wide"
 )
@@ -18,7 +18,7 @@ from common_nav import render_common_nav
 render_common_nav("BDL")
 st.divider()
 
-st.title("⚽ BDL AI Match Predictor")
+st.title("⚽ Bundesliga AI Match Predictor")
 
 def load_data():
     if not os.path.exists(DB_PATH):
@@ -110,9 +110,9 @@ else:
 st.markdown("---")
 
 # -----------------------------------------------------------------------------
-# 6. Prediction Scorecard by Round (BDL Gameweek)
+# 6. Prediction Scorecard by Round (Bundesliga Gameweek)
 # -----------------------------------------------------------------------------
-st.header("📈 Prediction Scorecard by Round (BDL Gameweek)")
+st.header("📈 Prediction Scorecard by Round (Bundesliga Gameweek)")
 
 if not stats_df.empty:
     group_col = 'round_name' if 'round_name' in stats_df.columns else 'date'
@@ -139,7 +139,7 @@ if not stats_df.empty:
 
     round_stats_7d = round_stats.tail(10)
 
-    base = alt.Chart(round_stats_7d).encode(x=alt.X(group_col, title='BDL Gameweek', sort=None))
+    base = alt.Chart(round_stats_7d).encode(x=alt.X(group_col, title='Bundesliga Gameweek', sort=None))
     bars = base.mark_bar().encode(
         y=alt.Y('accuracy', title='Accuracy (%)', scale=alt.Scale(domain=[0, 110])),
         color=alt.Color('bar_color', scale=None),
