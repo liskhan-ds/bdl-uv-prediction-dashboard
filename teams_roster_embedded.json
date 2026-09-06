@@ -1,0 +1,2042 @@
+{
+    "바이에른 뮌헨": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Manuel Neuer",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Dayot Upamecano",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Kim Min-Jae",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Alphonso Davies",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Josip Stanisic",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Joshua Kimmich",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Leon Goretzka",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Joao Palhinha",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Leroy Sane",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Serge Gnabry",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Kingsley Coman",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Sven Ulreich",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Hiroki Ito",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "DF",
+                "name": "Sacha Boey",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Konrad Laimer",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Jamal Musiala",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "바이어 레버쿠젠": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Lukas Hradecky",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Jonathan Tah",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Edmond Tapsoba",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Piero Hincapie",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Jeremie Frimpong",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Granit Xhaka",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Robert Andrich",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Exequiel Palacios",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Victor Boniface",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Patrik Schick",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Martin Terrier",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Matej Kovar",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Alejandro Grimaldo",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "DF",
+                "name": "Arthur",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Aleix Garcia",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Florian Wirtz",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "보루시아 도르트문트": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Gregor Kobel",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Nico Schlotterbeck",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Niklas Sule",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Waldemar Anton",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Julian Ryerson",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Emre Can",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Marcel Sabitzer",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Felix Nmecha",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Serhou Guirassy",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Donyell Malen",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Karim Adeyemi",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Alexander Meyer",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Yan Couto",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "DF",
+                "name": "Ramy Bensebaini",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Pascal Gross",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Julian Brandt",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "RB 라이프치히": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Peter Gulacsi",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Willi Orban",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Castello Lukeba",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Mohamed Simakan",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "David Raum",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Xaver Schlager",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Amadou Haidara",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Nicolas Seiwald",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Lois Openda",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Benjamin Sesko",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Yussuf Poulsen",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Maarten Vandevoordt",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Benjamin Henrichs",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "DF",
+                "name": "Lutsharel Geertruida",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Arthur Vermeeren",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Xavi Simons",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "아인트라흐트 프랑크푸르트": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Kevin Trapp",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Robin Koch",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Tuta",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Arthur Theate",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Rasmus Kristensen",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Ellyes Skhiri",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Hugo Larsson",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Mario Gotze",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Omar Marmoush",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Hugo Ekitike",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Igor Matanovic",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Kauã Santos",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Niels Nkounkou",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Fares Chaibi",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Junior Dina Ebimbe",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Ansgar Knauff",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            }
+        ]
+    },
+    "슈투트가르트": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Alexander Nubel",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Dan-Axel Zagadou",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Jeff Chabot",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Anthony Rouault",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Maximilian Mittelstadt",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Atakan Karazor",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Angelo Stiller",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Enzo Millot",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Deniz Undav",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Ermedin Demirovic",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "El Bilal Toure",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Fabian Bredlow",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Josha Vagnoman",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Chris Fuhrich",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Fabian Rieder",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Jamie Leweling",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            }
+        ]
+    },
+    "볼프스부르크": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Kamil Grabara",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Maxence Lacroix",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Sebastiaan Bornauw",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Cedric Zesiger",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Kilian Fischer",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Maximilian Arnold",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Mattias Svanberg",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Yannick Gerhardt",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Jonas Wind",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Mohamed Amoura",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Tiago Tomas",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Pavao Pervan",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Joakim Maehle",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Lovro Majer",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Patrick Wimmer",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Lukas Nmecha",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            }
+        ]
+    },
+    "보루시아 묀헨글라트바흐": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Jonas Omlin",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Nico Elvedi",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Ko Itakura",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Marvin Friedrich",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Joe Scally",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Julian Weigl",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Rocco Reitz",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Kevin Stoger",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Tim Kleindienst",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Alassane Plea",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Tomas Cvancara",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Moritz Nicolas",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Luca Netz",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Florian Neuhaus",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Franck Honorat",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Robin Hack",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            }
+        ]
+    },
+    "호펜하임": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Oliver Baumann",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Ozan Kabak",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Kevin Akpoguma",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Attila Szalai",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Pavel Kaderabek",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Grischa Promel",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Florian Grillitsch",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Anton Stach",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Andrej Kramaric",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Mergim Berisha",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Adam Hlozek",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Luca Philipp",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "David Jurasek",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Tom Bischof",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Marius Bulter",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "호펜하임 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "프라이부르크": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Noah Atubolu",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Matthias Ginter",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Philipp Lienhart",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Max Rosenfelder",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Kiliann Sildillia",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Maximilian Eggestein",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Nicolas Hofler",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Merlin Rohl",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Michael Gregoritsch",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Lucas Holer",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Junior Adamu",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Florian Muller",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Christian Gunter",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Vincenzo Grifo",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Ritsu Doan",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Eren Dinkci",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            }
+        ]
+    },
+    "아우크스부르크": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Nediljko Labrovic",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Jeffrey Gouweleeuw",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Keven Schlotterbeck",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Chrislain Matsima",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Mads Pedersen",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Elvis Rexhbecaj",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Kristijan Jakic",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Arne Maier",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Phillip Tietz",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Samuel Essende",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Steve Mounie",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Daniel Klein",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Marius Wolf",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Fredrik Jensen",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Ruben Vargas",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "아우크스부르크 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "마인츠 05": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Robin Zentner",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Stefan Bell",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Dominik Kohr",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Andreas Hanche-Olsen",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Silvan Widmer",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Kaishu Sano",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Nadiem Amiri",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Lee Jae-Sung",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Jonathan Burkardt",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Armindo Sieb",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Karim Onisiwo",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Daniel Batz",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Anthony Caci",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Hyun-seok Hong",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "Paul Nebel",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "MF",
+                "name": "마인츠 05 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "베르더 브레멘": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Michael Zetterer",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Milos Veljkovic",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Marco Friedl",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Amos Pieper",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Mitchell Weiser",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Senne Lynen",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Jens Stage",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Romano Schmid",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Marvin Ducksch",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Keke Topp",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Justin Njinmah",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Mio Backhaus",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Felix Agu",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Leonardo Bittencourt",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Marco Grull",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "베르더 브레멘 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "우니온 베를린": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Frederik Ronnow",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Danilho Doekhi",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Diogo Leite",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Kevin Vogt",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Josip Juranovic",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Rani Khedira",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Lucas Tousart",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Andras Schafer",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Yorbe Vertessen",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Benedict Hollerbach",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Kevin Volland",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Alexander Schwolow",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Tom Rothe",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Janik Haberer",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Jordan Siebatcheu",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "우니온 베를린 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "장크트파울리": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Nikola Vasilj",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Hauke Wahl",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Karol Mets",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "David Nemeth",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Manolis Saliakas",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Jackson Irvine",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Eric Smith",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Robert Wagner",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Johannes Eggestein",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Morgan Guilavogui",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Oladapo Afolayan",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Ben Voll",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Lars Ritzka",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Carlo Boukhalfa",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Elias Saad",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "장크트파울리 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "홀슈타인 킬": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Timon Weiner",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Patrick Erras",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Timo Becker",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Colin Kleine-Bekel",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Carl Johansson",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Lewis Holtby",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Nicolai Remberg",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Armin Gigovic",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Shuto Machino",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Steven Skrzybski",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Alexander Bernhardsson",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Thomas Dähne",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Max Komenda",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Finn Porath",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Fiete Arp",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "홀슈타인 킬 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "쾰른": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Marvin Schwabe",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Timo Hubers",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Julian Chabot",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Dominique Heintz",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Benno Schmitz",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Eric Martel",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Denis Huseinbasic",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Dejan Ljubicic",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Davie Selke",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Linton Maina",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Sardarkhan Waldschmidt",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Jonas Urbig",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Max Finkgrafe",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Florian Kainz",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Damion Downs",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "쾰른 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "하이덴하임": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Kevin Muller",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Patrick Mainka",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Benedikt Gimber",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Haktab Omar Traore",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Jonas Fohrenbach",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Lennard Maloney",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Jan Schoppner",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Paul Wanner",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Marvin Pieringer",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Mikkel Kaufmann",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Leo Scienza",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Paul Tschernuth",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Marnon Busch",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Adrian Beck",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Maximilian Breunig",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "하이덴하임 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "함부르크": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Daniel Heuer Fernandes",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Sebastian Schonlau",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Dennis Hadzikadunic",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Guilherme Ramos",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Mikelbrencis",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Jonas Meffert",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Ludovit Reis",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Immanuel Pherai",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Robert Glatzel",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Jean-Luc Dompe",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Ransford-Yeboah Konigsdorffer",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Matheus Raab",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Muheim",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Bakery Jatta",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Davie Selke",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "함부르크 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    },
+    "보훔": {
+        "starters": [
+            {
+                "pos": "GK",
+                "name": "Patrick Drewes",
+                "att_uv": 0.25,
+                "def_uv": 0.6
+            },
+            {
+                "pos": "DF",
+                "name": "Ivan Ordets",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Erhan Masovic",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Bernardo",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "DF",
+                "name": "Felix Passlack",
+                "att_uv": 0.44,
+                "def_uv": 0.54
+            },
+            {
+                "pos": "MF",
+                "name": "Anthony Losilla",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Ibrahima Sissoko",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "MF",
+                "name": "Matus Bero",
+                "att_uv": 0.54,
+                "def_uv": 0.44
+            },
+            {
+                "pos": "FW",
+                "name": "Philipp Hofmann",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Myron Boadu",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            },
+            {
+                "pos": "FW",
+                "name": "Moritz Broschinski",
+                "att_uv": 0.73,
+                "def_uv": 0.25
+            }
+        ],
+        "subs": [
+            {
+                "pos": "GK",
+                "name": "Timo Horn",
+                "att_uv": 0.2,
+                "def_uv": 0.5
+            },
+            {
+                "pos": "DF",
+                "name": "Maximilian Wittek",
+                "att_uv": 0.35,
+                "def_uv": 0.45
+            },
+            {
+                "pos": "MF",
+                "name": "Lukas Daschner",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            },
+            {
+                "pos": "FW",
+                "name": "Dani de Wit",
+                "att_uv": 0.65,
+                "def_uv": 0.2
+            },
+            {
+                "pos": "MF",
+                "name": "보훔 Sub",
+                "att_uv": 0.45,
+                "def_uv": 0.4
+            }
+        ]
+    }
+}
