@@ -295,7 +295,7 @@ def get_match_prediction(home_team, away_team):
         "sc_a": sc_a
     }
 
-def run_pipeline():
+def run_pipeline(mode="all"):
     url = "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard?dates=20260801-20270601&limit=500"
     
     try:
@@ -323,8 +323,6 @@ def run_pipeline():
 
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-
-    cursor.execute("DROP TABLE IF EXISTS predictions")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS predictions (
@@ -409,36 +407,82 @@ def run_pipeline():
                 
             mid = f"2026_{mw_prefix}_{game_idx}"
             
-            pred = get_match_prediction(h_team, a_team)
-            pred_winner = pred["winner"]
+            cursor.execute("SELECT predicted_winner FROM predictions WHERE match_id = ?", (mid,))
+            existing = cursor.fetchone()
             
-            if is_completed and act_winner is not None:
-                if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
-                    is_corr = 1
-                else:
-                    is_corr = 0
-            else:
-                is_corr = None
+            if existing:
+                pred_winner = existing[0]
+                if mode in ["score", "all"]:
+                    if is_completed and act_winner is not None:
+                        if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
+                            is_corr = 1
+                        else:
+                            is_corr = 0
+                    else:
+                        is_corr = None
+                        
+                    cursor.execute("""
+                    UPDATE predictions SET
+                        match_date_ger = ?,
+                        match_date_kst = ?,
+                        actual_score_home = ?,
+                        actual_score_away = ?,
+                        actual_winner = ?,
+                        is_correct = ?
+                    WHERE match_id = ?
+                    """, (ger_date_str, kst_date_str, act_sc_h, act_sc_a, act_winner, is_corr, mid))
                 
-            cursor.execute("""
-            INSERT INTO predictions (
-                match_id, round_name, home_team, away_team, match_date, match_date_ger, match_date_kst,
-                home_wuv, away_wuv, home_total_wuv, away_total_wuv,
-                gap, predicted_winner, prob_home, prob_draw, prob_away,
-                score_home, score_away,
-                actual_score_home, actual_score_away, actual_winner, is_correct
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                mid, round_label, h_team, a_team, ger_date_str, ger_date_str, kst_date_str,
-                pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
-                pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
-                pred["sc_h"], pred["sc_a"],
-                act_sc_h, act_sc_a, act_winner, is_corr
-            ))
+                if mode in ["predict", "all"]:
+                    pred = get_match_prediction(h_team, a_team)
+                    pred_winner = pred["winner"]
+                    cursor.execute("""
+                    UPDATE predictions SET
+                        home_wuv = ?, away_wuv = ?, home_total_wuv = ?, away_total_wuv = ?,
+                        gap = ?, predicted_winner = ?, prob_home = ?, prob_draw = ?, prob_away = ?,
+                        score_home = ?, score_away = ?
+                    WHERE match_id = ?
+                    """, (
+                        pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
+                        pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
+                        pred["sc_h"], pred["sc_a"], mid
+                    ))
+            else:
+                pred = get_match_prediction(h_team, a_team)
+                pred_winner = pred["winner"]
+                
+                if is_completed and act_winner is not None:
+                    if (act_winner == pred_winner) or (h_team in act_winner and h_team in pred_winner) or (a_team in act_winner and a_team in pred_winner):
+                        is_corr = 1
+                    else:
+                        is_corr = 0
+                else:
+                    is_corr = None
+                    
+                cursor.execute("""
+                INSERT INTO predictions (
+                    match_id, round_name, home_team, away_team, match_date, match_date_ger, match_date_kst,
+                    home_wuv, away_wuv, home_total_wuv, away_total_wuv,
+                    gap, predicted_winner, prob_home, prob_draw, prob_away,
+                    score_home, score_away,
+                    actual_score_home, actual_score_away, actual_winner, is_correct
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    mid, round_label, h_team, a_team, ger_date_str, ger_date_str, kst_date_str,
+                    pred["home_wuv"]["team_wuv"], pred["away_wuv"]["team_wuv"], pred["h_total"], pred["a_total"],
+                    pred["gap"], pred_winner, pred["p_home"], pred["p_draw"], pred["p_away"],
+                    pred["sc_h"], pred["sc_a"],
+                    act_sc_h, act_sc_a, act_winner, is_corr
+                ))
 
     conn.commit()
     conn.close()
     print("✅ bdl_data.db 파이프라인 GER/KST 정확한 타임존 날짜 반영 완료!")
 
 if __name__ == "__main__":
-    run_pipeline()
+    import argparse
+    parser = argparse.ArgumentParser(description="BDL Pipeline Runner")
+    parser.add_argument("--mode", choices=["predict", "score", "all"], default="all", help="Pipeline execution mode")
+    args = parser.parse_args()
+
+    print(f"🚀 Bundesliga (BDL) 정규 시즌 파이프라인 시작 (Mode: {args.mode})", flush=True)
+    run_pipeline(mode=args.mode)
