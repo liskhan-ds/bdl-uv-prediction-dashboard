@@ -1,13 +1,20 @@
 import sqlite3
 import requests
 import os
+import sys
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+from espn_stats_fetcher import get_espn_player_stats
 import json
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta, timezone
 import zoneinfo
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "bdl_data.db")
 
 TEAM_NAME_MAP = {
@@ -32,71 +39,6 @@ TEAM_NAME_MAP = {
     "FC Cologne": "쾰른", "1. FC Köln": "쾰른", "Hamburg SV": "함부르크",
     "SV Elversberg": "엘버스베르크", "SC Paderborn 07": "파더보른", "Schalke 04": "샬케 04", "FC Schalke 04": "샬케 04"
 }
-
-OFFICIAL_STATS = {
-    "Harry Kane": (7.90, 0.90), "Florian Wirtz": (7.80, 0.45), "Jamal Musiala": (7.75, 0.40),
-    "Serhou Guirassy": (7.65, 0.65), "Omar Marmoush": (7.65, 0.60), "Xavi Simons": (7.60, 0.35),
-    "Joshua Kimmich": (7.60, 0.15), "Lois Openda": (7.55, 0.55), "Granit Xhaka": (7.55, 0.10),
-    "Alejandro Grimaldo": (7.55, 0.25), "Jeremie Frimpong": (7.50, 0.22), "Victor Boniface": (7.50, 0.50),
-    "Michael Olise": (7.50, 0.38), "Jonathan Tah": (7.45, 0.05), "Gregor Kobel": (7.45, 0.0),
-    "Deniz Undav": (7.45, 0.48), "Alphonso Davies": (7.40, 0.08), "Nico Schlotterbeck": (7.40, 0.05),
-    "Benjamin Sesko": (7.40, 0.45), "Manuel Neuer": (7.35, 0.0), "Leroy Sane": (7.35, 0.30),
-    "Julian Brandt": (7.35, 0.25), "Kim Min-Jae": (7.35, 0.05), "Hugo Ekitike": (7.35, 0.35),
-    "Andrej Kramaric": (7.35, 0.35), "Lukas Hradecky": (7.30, 0.0), "Dayot Upamecano": (7.30, 0.05),
-    "Marcel Sabitzer": (7.30, 0.18), "Vincenzo Grifo": (7.30, 0.30), "Lee Jae-Sung": (7.25, 0.20),
-    "Shuto Machino": (7.15, 0.30)
-}
-
-TEAM_GOALS_PER_GAME = {
-    "Bayern Munich": 2.60, "바이에른 뮌헨": 2.60,
-    "Bayer Leverkusen": 2.40, "바이어 레버쿠젠": 2.40,
-    "Borussia Dortmund": 2.10, "보루시아 도르트문트": 2.10,
-    "RB Leipzig": 2.00, "RB 라이프치히": 2.00,
-    "VfB Stuttgart": 1.90, "슈투트가르트": 1.90,
-    "Eintracht Frankfurt": 1.80, "아인트라흐트 프랑크푸르트": 1.80,
-    "TSG Hoffenheim": 1.60, "호펜하임": 1.60,
-    "SC Freiburg": 1.50, "프라이부르크": 1.50,
-    "Borussia Mönchengladbach": 1.45, "보루시아 묀헨글라트바흐": 1.45,
-    "VfL Wolfsburg": 1.40, "볼프스부르크": 1.40,
-    "FC Augsburg": 1.30, "아우크스부르크": 1.30,
-    "Werder Bremen": 1.30, "베르더 브레멘": 1.30,
-    "Mainz": 1.25, "마인츠 05": 1.25,
-    "1. FC Heidenheim 1846": 1.20, "하이덴하임": 1.20,
-    "1. FC Union Berlin": 1.10, "우니온 베를린": 1.10,
-    "Holstein Kiel": 1.05, "홀슈타인 킬": 1.05,
-    "St. Pauli": 1.00, "장크트파울리": 1.00,
-    "VfL Bochum": 0.95, "보훔": 0.95,
-}
-
-TEAM_CONCEDED_PER_GAME = {
-    "Bayern Munich": 1.00, "바이에른 뮌헨": 1.00,
-    "Bayer Leverkusen": 1.00, "바이어 레버쿠젠": 1.00,
-    "RB Leipzig": 1.10, "RB 라이프치히": 1.10,
-    "Borussia Dortmund": 1.20, "보루시아 도르트문트": 1.20,
-    "Eintracht Frankfurt": 1.30, "아인트라흐트 프랑크푸르트": 1.30,
-    "VfB Stuttgart": 1.30, "슈투트가르트": 1.30,
-    "SC Freiburg": 1.35, "프라이부르크": 1.35,
-    "1. FC Union Berlin": 1.40, "우니온 베를린": 1.40,
-    "St. Pauli": 1.45, "장크트파울리": 1.45,
-    "Mainz": 1.50, "마인츠 05": 1.50,
-    "VfL Wolfsburg": 1.50, "볼프스부르크": 1.50,
-    "Werder Bremen": 1.55, "베르더 브레멘": 1.55,
-    "Borussia Mönchengladbach": 1.55, "보루시아 묀헨글라트바흐": 1.55,
-    "TSG Hoffenheim": 1.60, "호펜하임": 1.60,
-    "FC Augsburg": 1.60, "아우크스부르크": 1.60,
-    "1. FC Heidenheim 1846": 1.60, "하이덴하임": 1.60,
-    "Holstein Kiel": 1.70, "홀슈타인 킬": 1.70,
-    "VfL Bochum": 1.80, "보훔": 1.80,
-}
-
-LOW_POSSESSION_TEAMS = [
-    "1. FC Union Berlin", "우니온 베를린",
-    "St. Pauli", "장크트파울리",
-    "Holstein Kiel", "홀슈타인 킬",
-    "VfL Bochum", "보훔",
-    "1. FC Heidenheim 1846", "하이덴하임",
-    "FC Augsburg", "아우크스부르크",
-]
 
 def normalize_team_name(raw_name):
     if not raw_name:
@@ -136,64 +78,36 @@ def get_team_roster(team_name, absentees=None):
 
 def calculate_player_uv(player_data, team_name=""):
     p_name_raw = player_data.get("name", "")
-    p_name = normalize_team_name(p_name_raw) if "normalize_team_name" in globals() else p_name_raw.strip()
     
-    rating = player_data.get("rating", None)
-    goals_per90 = player_data.get("goals_per90", 0.0)
-    position = player_data.get("pos", "M")
+    rating = None
+    goals_per90 = 0.0
+    position = player_data.get("pos", "MF")
     
-    matched = False
-    for off_name, (off_r, off_g90) in OFFICIAL_STATS.items():
-        if off_name.lower() in p_name_raw.lower() or p_name_raw.lower() in off_name.lower():
-            if rating is None:
-                rating = off_r
-            goals_per90 = off_g90
-            matched = True
-            break
-            
+    espn_res = get_espn_player_stats(p_name_raw)
+    if espn_res:
+        rating, goals_per90 = espn_res
+        
     pos_clean = "GK" if position in ["G", "GK"] else ("DF" if position in ["D", "DF"] else ("MF" if position in ["M", "MF"] else "FW"))
     
-    tgoals = TEAM_GOALS_PER_GAME.get(team_name, 1.30)
-    is_low_poss = team_name in LOW_POSSESSION_TEAMS
-    
-    if rating is None:
+    if rating is None or rating == 0:
         if pos_clean == "GK":
             raw_uv = 0.95
         elif pos_clean == "DF":
             raw_uv = 0.90
         elif pos_clean == "MF":
-            raw_uv = 0.82 if is_low_poss else 0.88
+            raw_uv = 0.88
+        else:
+            raw_uv = 0.85
+    elif rating >= 6.88:
+        if pos_clean in ["GK", "DF", "MF"]:
+            raw_uv = 1.0 + (rating - 6.88) * 0.50
         else: # FW
-            raw_uv = 0.78 if tgoals < 1.1 else 0.85
-    elif rating >= 6.65:
-        if pos_clean == "GK":
-            raw_uv = 1.0 + (rating - 6.65) * 0.45
-        elif pos_clean == "DF":
-            raw_uv = 1.0 + (rating - 6.65) * 0.40
-        elif pos_clean == "MF":
-            raw_uv = 1.0 + (rating - 6.65) * 0.35
-            if is_low_poss:
-                raw_uv -= 0.08
-        else: # FW
-            raw_uv = 1.0 + (rating - 6.65) * 0.35 + (goals_per90 * 0.20)
-            if goals_per90 < 0.15 or tgoals < 1.1:
-                fw_penalty = min(0.15, round(0.10 + (0.15 - max(goals_per90, 0.0)) * 0.33, 3))
-                raw_uv -= fw_penalty
+            raw_uv = 1.0 + (rating - 6.88) * 0.50 + (goals_per90 * 0.40)
     else:
         slope = 0.80 if pos_clean == "MF" else 0.65
-        raw_uv = 1.0 + (rating - 6.65) * slope + (goals_per90 * 0.20 if pos_clean == "FW" else 0.0)
-        if pos_clean == "MF" and is_low_poss:
-            raw_uv -= 0.08
-        elif pos_clean == "FW" and (goals_per90 < 0.15 or tgoals < 1.1):
-            fw_penalty = min(0.15, round(0.10 + (0.15 - max(goals_per90, 0.0)) * 0.33, 3))
-            raw_uv -= fw_penalty
+        raw_uv = 1.0 + (rating - 6.88) * slope + (goals_per90 * 0.40 if pos_clean == "FW" else 0.0)
         
-    conc = TEAM_CONCEDED_PER_GAME.get(team_name, 1.30)
-    if pos_clean in ["GK", "DF"] and conc > 1.4:
-        def_penalty = min(0.12, round(0.04 + (conc - 1.4) * 0.10, 3))
-        raw_uv -= def_penalty
-        
-    return round(min(max(raw_uv, 0.4), 2.0), 3)
+    return round(min(max(raw_uv, 0.1), 2.5), 3)
 
 def calculate_wuv(team_name, absentees=None):
     roster = get_team_roster(team_name, absentees=absentees)
@@ -206,8 +120,10 @@ def calculate_wuv(team_name, absentees=None):
     st_avg = sum(st_uvs) / len(st_uvs) if st_uvs else 0.95
     sub_avg = sum(sub_uvs) / len(sub_uvs) if sub_uvs else 0.85
     
-    raw_wuv = (0.85 * st_avg + 0.15 * sub_avg)
-    team_wuv = round(11.0 + 10.5 * (raw_wuv - 0.835), 2)
+    st_tot_sum = sum(st_uvs)
+    sub_tot_sum = sum(sub_uvs)
+    raw_wuv = 0.85 * st_avg + 0.15 * sub_avg
+    team_wuv = round(raw_wuv * 11.0, 3)
     
     pos_sums = {"GK": 0.0, "DF": 0.0, "MF": 0.0, "FW": 0.0}
     starters_detail = []
@@ -218,17 +134,18 @@ def calculate_wuv(team_name, absentees=None):
         pos_sums[pos_clean] += uv
         starters_detail.append({"name": p.get("name"), "pos": pos_clean, "uv": uv})
         
-    st_tot_sum = sum(st_uvs)
-    gk_wuv = round(team_wuv * (pos_sums["GK"] / st_tot_sum), 2) if st_tot_sum > 0 else 1.0
-    df_wuv = round(team_wuv * (pos_sums["DF"] / st_tot_sum), 2) if st_tot_sum > 0 else 4.0
-    mf_wuv = round(team_wuv * (pos_sums["MF"] / st_tot_sum), 2) if st_tot_sum > 0 else 3.0
-    fw_wuv = round(team_wuv * (pos_sums["FW"] / st_tot_sum), 2) if st_tot_sum > 0 else 3.0
+    tot_st_uv = sum(pos_sums.values()) or 1.0
+    gk_wuv = round(team_wuv * (pos_sums["GK"] / tot_st_uv), 2)
+    df_wuv = round(team_wuv * (pos_sums["DF"] / tot_st_uv), 2)
+    mf_wuv = round(team_wuv * (pos_sums["MF"] / tot_st_uv), 2)
+    fw_wuv = round(team_wuv * (pos_sums["FW"] / tot_st_uv), 2)
     
     return {
         "team_wuv": team_wuv,
         "st_avg": round(st_avg, 3),
         "sub_avg": round(sub_avg, 3),
         "st_sum": round(st_tot_sum, 3),
+        "sub_sum": round(sub_tot_sum, 3),
         "gk_wuv": gk_wuv,
         "df_wuv": df_wuv,
         "mf_wuv": mf_wuv,
@@ -240,7 +157,7 @@ def get_match_prediction(home_team, away_team):
     h_info = calculate_wuv(home_team)
     a_info = calculate_wuv(away_team)
     
-    h_total = h_info["team_wuv"] + 0.25
+    h_total = h_info["team_wuv"] + 0.15
     a_total = a_info["team_wuv"]
     
     gap = h_total - a_total

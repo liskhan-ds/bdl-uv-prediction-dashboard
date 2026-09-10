@@ -14,8 +14,6 @@ st.set_page_config(
     layout="wide"
 )
 
-from common_nav import render_common_nav
-render_common_nav("BDL")
 st.divider()
 
 st.title("⚽ Bundesliga AI Match Predictor")
