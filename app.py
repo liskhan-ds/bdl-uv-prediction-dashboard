@@ -10,13 +10,16 @@ DB_PATH = os.path.join(BASE_DIR, "bdl_data.db")
 
 st.set_page_config(
 
-from common_nav import render_common_nav
-render_common_nav("BDL")
 
     page_title="Bundesliga AI Match Predictor",
     page_icon="⚽",
     layout="wide"
 )
+
+from common_nav import render_common_nav
+render_common_nav("BDL")
+
+
 
 
 
